@@ -292,7 +292,7 @@
 
         function start() {
             //아래 코드를 넣어야 아이폰 사파리에서 "추첨기 출력박스"를 연속으로 클릭시 추첨하기 클릭을 누른 효과가 난다. 안넣으면 "추첨기 출력박스"를 클릭시 포커스가 들어가서 출력박스 클릭이 안된다.
-            $("#lucky_start_btn").focus();
+            
 
             document.getElementById("lucky_start_btn").disabled = "disabled"; //추첨하기 버튼 비활성화
             document.getElementById("lucky_start_btn").innerText = "추첨중...";
@@ -400,7 +400,7 @@
         <div style="height:5px;"></div>
         <div id="lucky">
             <!--<input type="text" id="lucky_output" readonly  onClick="start();">-->
-            <div style="text-align:center; font-size:230px;" id="lucky_output" onClick="start();" class="result">
+            <div style="text-align:center; font-size:230px;" id="lucky_output" onClick="start();">
                 ?
             </div>
 
