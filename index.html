@@ -140,30 +140,30 @@
         }
     </style>
     <script>
-        $(document).ready(function() {
+        (document).ready(function() {
             //화면 가로크기 아이폰 320
             //alert($(document).width());
 
             // 쿠키값이 있다면 추첨인원수 자동대입
             if (get_cookie('cookie_lucky_number') != "") {
                 //document.getElementById("max_num").value = get_cookie("cookie_lucky_number");
-                $("#max_num").val(get_cookie("cookie_lucky_number"));
+                ("#max_num").val(get_cookie("cookie_lucky_number"));
 
                 // 엔터값과 한글을 위해서 unescape 함수추가
                 document.getElementById("cookie_lucky_name_input").value = unescape(get_cookie('cookie_lucky_name'));
             }
 
             // 제이쿼리를 이용한 번호만 입력받기!
-            $(".onlynum").keyup(function() {
-                $(this).val($(this).val().replace(/[^0-9]/g, ""));
+            (".onlynum").keyup(function() {
+                (this).val((this).val().replace(/[^0-9]/g, ""));
             });
-            $(".onlyeng").keyup(function() {
-                $(this).val($(this).val().replace(/[^\!-z]/g, ""));
+            (".onlyeng").keyup(function() {
+                (this).val((this).val().replace(/[^\!-z]/g, ""));
             });
 
             //screen.width
-            //$("#show").text(screen.width);
-        }); //end of "$(document).ready (function() {"
+            //("#show").text(screen.width);
+        }); //end of "(document).ready (function() {"
 
         var totalnumbers = 1; // 출력갯수 6개..
         var lowerbound = 1; // 가장작은수
@@ -181,7 +181,7 @@
         function lucky() {
             runtimeState = true; //추첨실행중
 
-            $("#lucky_ready").html("<font color=gray>발표자는 바로...</font>");
+            ("#lucky_ready").html("<font color=gray>발표자는 바로...</font>");
 
             if (document.getElementById("lucky_kind_number").checked == true) {
                 //B=' '; 
@@ -233,7 +233,7 @@
             }
 
             //if (document.getElementById) document.getElementById("lucky_output").value = OutPut;
-            $("#lucky_output").text(OutPut);
+            ("#lucky_output").text(OutPut);
 
             T = setTimeout('lucky()', 20);
         }
@@ -254,7 +254,7 @@
             //추첨처리되는거 정지
             clearTimeout(T);
 
-            $("#lucky_ready").html("<font color=red>발표하세요</font>");
+            ("#lucky_ready").html("<font color=red>발표하세요</font>");
 
             document.getElementById("lucky_start_btn").disabled = ""; //추첨하기 버튼 활성화
             document.getElementById("lucky_start_btn").innerText = "추첨하기";
@@ -268,13 +268,13 @@
             var M = addZero(today.getMinutes());
             var s = addZero(today.getSeconds());
             var current_time = "(" + year + "-" + mon + "-" + dat + " " + H + ":" + M + ":" + s + ")";
-            $("#lucky_time").text(current_time);
+            ("#lucky_time").text(current_time);
 
             if (arr_count == 0) {
                 //alert(OutPut); 당첨된 번호 또는 이름
-                $("#lucky_seq_content").append(" " + OutPut);
+                ("#lucky_seq_content").append(" " + OutPut);
             } else {
-                $("#lucky_seq_content").append(" , " + OutPut);
+                ("#lucky_seq_content").append(" , " + OutPut);
             }
 
             // 당첨된 인덱스값을 배열에 저장
@@ -304,7 +304,7 @@
                     document.getElementById("max_num").value = "30";
                 }
                 //30일간 쿠키유지
-                set_cookie("cookie_lucky_number", $("#max_num").val(), 24 * 30);
+                set_cookie("cookie_lucky_number", ("#max_num").val(), 24 * 30);
             }
             //이름추첨
             else {
@@ -314,18 +314,18 @@
                     document.getElementById("lucky_start_btn").disabled = ""; //추첨하기 버튼 활성화
                     document.getElementById("lucky_start_btn").innerText = "추첨하기";
                     //document.getElementById("cookie_lucky_name_input").focus();
-                    $("#cookie_lucky_name_input").focus();
+                    ("#cookie_lucky_name_input").focus();
                     return true;
                 }
                 //30일간 쿠키유지
-                set_cookie("cookie_lucky_name", $("#cookie_lucky_name_input").val(), 24 * 30, window.location.host);
+                set_cookie("cookie_lucky_name", ("#cookie_lucky_name_input").val(), 24 * 30, window.location.host);
             }
 
             // 추첨인원 전역변수 대입
             upperbound = document.getElementById("max_num").value;
 
             //당첨인원수
-            //prizewinnerCnt = $("#prizewinnerCnt").val();
+            //prizewinnerCnt = ("#prizewinnerCnt").val();
             /*
             			for(var i=0; i<prizewinnerCnt;i++)
             			{
@@ -359,11 +359,11 @@
         function fn_setAddTc(n) {
             for (var i = 1; i <= 2; i++) {
                 if (n == i) {
-                    $("#lucky_kind_" + i).css("font-weight", "bold");
-                    $("#dip_p" + i).show("");
+                    ("#lucky_kind_" + i).css("font-weight", "bold");
+                    ("#dip_p" + i).show("");
                 } else {
-                    $("#lucky_kind_" + i).css("font-weight", "");
-                    $("#dip_p" + i).hide("");
+                    ("#lucky_kind_" + i).css("font-weight", "");
+                    ("#dip_p" + i).hide("");
                 }
             }
 
@@ -385,7 +385,7 @@
 
             // 당첨결과 초기화
             arr_count = 0;
-            $("#lucky_seq_content").text("지금까지 발표한 사람 : ");
+            ("#lucky_seq_content").text("지금까지 발표한 사람 : ");
         }
     </script>
 </head>
