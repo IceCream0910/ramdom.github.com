@@ -10,6 +10,7 @@
     <meta http-equiv="content-type" content="text/html; charset=euc-kr">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 
+    <meta property="og:url" content="http://www.zetswing.com/lucky" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="번호이름 추첨기" />
     <meta property="og:description" content="원하는 인원수로 쉽게 번호를 추첨할 수 있습니다. 그리고 원하는 후보들로 쉽게 이름을 추첨할수 있습니다." />
@@ -18,7 +19,7 @@
     <title>번호이름 추첨기</title>
     <link rel="stylesheet" href="index.css" type="text/css">
     <script type="text/javascript" src="index.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <style>
         body {
             margin: 0px;
@@ -138,6 +139,31 @@
             letter-spacing: -1px;
         }
     </style>
+    <script>
+        $(document).ready(function() {
+            //화면 가로크기 아이폰 320
+            //alert($(document).width());
+
+            // 쿠키값이 있다면 추첨인원수 자동대입
+            if (get_cookie('cookie_lucky_number') != "") {
+                //document.getElementById("max_num").value = get_cookie("cookie_lucky_number");
+                $("#max_num").val(get_cookie("cookie_lucky_number"));
+
+                // 엔터값과 한글을 위해서 unescape 함수추가
+                document.getElementById("cookie_lucky_name_input").value = unescape(get_cookie('cookie_lucky_name'));
+            }
+
+            // 제이쿼리를 이용한 번호만 입력받기!
+            $(".onlynum").keyup(function() {
+                $(this).val($(this).val().replace(/[^0-9]/g, ""));
+            });
+            $(".onlyeng").keyup(function() {
+                $(this).val($(this).val().replace(/[^\!-z]/g, ""));
+            });
+
+            //screen.width
+            //$("#show").text(screen.width);
+        }); //end of "$(document).ready (function() {"
 
         var totalnumbers = 1; // 출력갯수 6개..
         var lowerbound = 1; // 가장작은수
@@ -266,7 +292,7 @@
 
         function start() {
             //아래 코드를 넣어야 아이폰 사파리에서 "추첨기 출력박스"를 연속으로 클릭시 추첨하기 클릭을 누른 효과가 난다. 안넣으면 "추첨기 출력박스"를 클릭시 포커스가 들어가서 출력박스 클릭이 안된다.
-            
+            $("#lucky_start_btn").focus();
 
             document.getElementById("lucky_start_btn").disabled = "disabled"; //추첨하기 버튼 비활성화
             document.getElementById("lucky_start_btn").innerText = "추첨중...";
@@ -385,7 +411,7 @@
 
                 <input type="radio" name="lucky_kind" id="lucky_kind_name" value="2" onclick="fn_setAddTc(2);"><label for="lucky_kind_name">이름</label>
 
-              
+                <!--<span style="float: right;padding-right:5px;border:0px solid #ff0000;line-height:24px;" id="lucky_time">(----.--.-- --:--:--)</span>-->
                 <span style="float: right;padding-right:5px;border:0px solid #ff0000;line-height:24px; font-size:20px;" id="lucky_ready">추첨준비</span>
             </div>
             <div style="height:15px;"></div>
